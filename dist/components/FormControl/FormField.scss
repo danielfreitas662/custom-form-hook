@@ -1,0 +1,32 @@
+@import '../../colors.scss';
+
+.formfield-wrapper {
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .formfield-label {
+    margin-top: 7px;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    font-size: $font_size_normal;
+    &.required {
+      &::before {
+        content: '*';
+      }
+    }
+    &.colon {
+      &::after {
+        content: ':';
+      }
+    }
+  }
+  .helper {
+    color: $primary_color;
+    font-size: $font_size_normal;
+    display: flex;
+    flex-direction: column;
+    &.error {
+      color: $danger_color;
+    }
+  }
+}

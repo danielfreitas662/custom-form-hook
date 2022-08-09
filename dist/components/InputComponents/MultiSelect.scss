@@ -1,0 +1,78 @@
+@import '../../colors.scss';
+
+.mselect-wrapper {
+  position: relative;
+  .mselect-input-wrapper {
+    border: 1px solid $outline_color;
+    min-height: 25px;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    max-height: 200px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    .selected-item {
+      border: 1px solid $primary_color;
+      color: $primary_color;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 2px;
+      font-size: $font_size_small;
+      margin: 3px;
+      &:hover {
+        background-color: $primary_color;
+        color: $primary_text;
+      }
+    }
+    .mselect-input {
+      padding: 5px;
+      width: 92%;
+      border: none;
+      margin: 2px;
+      font-size: $font_size_normal;
+      &:focus {
+        outline: none;
+      }
+    }
+    &:focus-within {
+      border: 1px solid $primary_color;
+    }
+    &.error {
+      border: 1px solid $danger_color;
+    }
+  }
+  .mselect-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    overflow-y: scroll;
+    font-size: $font_size_normal;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px;
+    z-index: 100;
+    max-height: 200px;
+    width: 100%;
+    &.visible {
+      display: inline-flex;
+    }
+    .mselect-option-item {
+      padding: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: space-between;
+      border-bottom: 1px solid $outline_color;
+      &.selected {
+        color: $secondary_text;
+        background-color: $secondary_color;
+      }
+      &:hover {
+        color: white;
+        background-color: $primary_color;
+      }
+      &.selected::after {
+        content: 'X';
+      }
+    }
+  }
+}

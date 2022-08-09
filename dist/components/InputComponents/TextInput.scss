@@ -1,0 +1,26 @@
+@import '../../colors.scss';
+.input-text-wrapper {
+  display: inline-flex;
+  align-items: center;
+  font-size: small;
+  border-radius: 5px;
+  border: 1px solid $outline_color;
+}
+.input-text-wrapper.error {
+  border: 1px solid $danger_color;
+}
+.input-text-input {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  border-style: none;
+  font-size: small;
+  outline: none;
+}
+.input-text-wrapper:focus-within {
+  border: 1px solid $primary_color;
+}
+.text-input-eye {
+  padding: 5px;
+  cursor: pointer;
+}

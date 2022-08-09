@@ -1,0 +1,107 @@
+@import '../../colors.scss';
+
+@mixin colorPatert($variant) {
+  @if $variant == 'outlined' {
+    border-color: $text_color;
+    background-color: $outline_text;
+    color: $primary_color;
+  }
+  @if $variant == 'primary' {
+    border-color: $primary_color;
+    background-color: $primary_color;
+    color: $primary_text;
+  }
+  @if $variant == 'secondary' {
+    border-color: $secondary_color;
+    background-color: $secondary_color;
+    color: $secondary_text;
+  }
+  @if $variant == 'success' {
+    border-color: $success_color;
+    background-color: $success_color;
+    color: $success_text;
+  }
+  @if $variant == 'alert' {
+    border-color: $alert_color;
+    background-color: $alert_color;
+    color: $alert_text;
+  }
+  @if $variant == 'danger' {
+    border-color: $danger_color;
+    background-color: $danger_color;
+    color: $danger_text;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.button-wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: end;
+  .button {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: small;
+    cursor: pointer;
+    &:hover {
+      filter: saturate(0.5);
+    }
+    &.loading {
+      cursor: auto;
+    }
+    &.outlined {
+      @include colorPatert('outlined');
+    }
+    &.primary {
+      @include colorPatert('primary');
+    }
+    &.secondary {
+      @include colorPatert('secondary');
+    }
+    &.success {
+      @include colorPatert('success');
+    }
+    &.alert {
+      @include colorPatert('alert');
+    }
+    &.danger {
+      @include colorPatert('danger');
+    }
+  }
+  &.loading {
+    .loading-spin {
+      position: absolute;
+      border: 5px solid lightgrey;
+      border-top: 5px solid $primary_color;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      left: calc(50% - 10px);
+      z-index: 2;
+      top: calc(50% - 10px);
+    }
+    .loading-mask {
+      border-radius: 5px;
+      opacity: 0.5;
+      background-color: rgba(255, 255, 255, 0.7);
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+}

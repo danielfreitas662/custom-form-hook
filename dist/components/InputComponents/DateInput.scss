@@ -1,0 +1,129 @@
+@import '../../colors.scss';
+
+.input-wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+  font-size: small;
+  border-radius: 5px;
+  border: 1px solid $outline_color;
+  &.error {
+    border: 1px solid $danger_color;
+  }
+  .calendar-container {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px;
+    z-index: 3000;
+    top: 32px;
+    font-size: smaller;
+    .calendar-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .btn-month {
+        cursor: pointer;
+        color: $primary_color;
+        border: 1px solid $primary_color;
+        background-color: white;
+        border-radius: 5px;
+        padding: 4px;
+        width: 20px;
+      }
+      .btn-year {
+        cursor: pointer;
+        color: white;
+        border: 1px solid $primary_color;
+        background-color: $primary_color;
+        border-radius: 5px;
+        padding: 4px;
+        width: 30px;
+      }
+      .current-date {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3px;
+        color: $primary_color;
+        font-weight: 600;
+        font-size: small;
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: end;
+      .btn-today {
+        color: white;
+        background-color: $primary_color;
+        border: 1px solid $primary_color;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    .week-days {
+      display: grid;
+      text-align: center;
+      font-weight: 700;
+      grid-template-columns: auto auto auto auto auto auto auto;
+    }
+    .calendar-days {
+      display: grid;
+      gap: 2px 2px;
+      justify-content: center;
+      grid-template-columns: auto auto auto auto auto auto auto;
+      .day {
+        border: 1px solid $outline_color;
+        padding: 3px;
+        text-align: center;
+        border-radius: 2px;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid $primary_color;
+          color: $primary_color;
+        }
+        &.Dom {
+          background-color: lightgrey;
+        }
+        &.Sab {
+          background-color: lightgrey;
+        }
+        &.today {
+          border: 1px solid $primary_color;
+          color: $primary_color;
+        }
+        &.selected {
+          border: 1px solid $primary_color;
+          color: white;
+          background-color: $primary_color;
+        }
+      }
+    }
+    &.visible {
+      display: block;
+    }
+  }
+  &:focus-within {
+    border: 1px solid $primary_color;
+  }
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    border-style: none;
+    font-size: small;
+    outline: none;
+    &:focus {
+    }
+  }
+}
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

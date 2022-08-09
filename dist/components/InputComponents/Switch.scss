@@ -1,0 +1,35 @@
+@import '../../colors.scss';
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+
+  .switch-button {
+    cursor: pointer;
+    height: 24px;
+    width: 40px;
+    background-color: $outline_color;
+    border-radius: 12px;
+    position: relative;
+    transition: 0.4s;
+    .switch-indicator {
+      top: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 10px;
+      position: absolute;
+      transition: 0.5s;
+      background-color: white;
+      left: 3px;
+    }
+    &.on {
+      background-color: $primary_color;
+      .switch-indicator {
+        left: 19px;
+
+        background-color: white;
+      }
+    }
+  }
+}
