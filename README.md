@@ -1,18 +1,13 @@
-# Getting Started with Create React App
+# Custom React Form Hook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to use
 
-## Available Scripts
+Install package in your project by running npm install custom-form-hook
 
-In the project directory, you can run:
+### `Quick start example`
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`import React from 'react';`
+`import { Form } from 'custom-form-hook';`
 
 ### `npm test`
 
