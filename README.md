@@ -2,64 +2,72 @@
 
 ## How to use
 
-Install package in your project by running npm install custom-form-hook
+Install package in your project by running `npm install custom-form-hook`
 
 ### `Quick start example`
 
-`import React from 'react';`
-`import { Form } from 'custom-form-hook';`
+```sh
+import React from 'react';
+import { Form, Button, TextInput } from 'custom-form-hook';
 
-### `npm test`
+function TestView() {
+  const initialValues = {
+    contacts: [
+      { mobile: '84888928939' },
+      { mobile: '78993890949' },
+    ],
+    firstName: 'Daniel',
+    lastName: 'Freitas',
+    address: {
+      street: 'Julio Ferreira',
+      number: '45',
+    },
+  };
+  const form = Form.useForm(initialValues);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  return (
+    <div>
+      <Form form={form} colon onFinish={(values) => console.log(values)}>
+        <Form.Field name="firstName" label="First Name">
+          <TextInput />
+        </Form.Field>
+        <Form.Field name="lastName" label="Last Name">
+          <TextInput />
+        </Form.Field>
+        <Form.Field name={['address', 'street']} label="Street">
+          <TextInput />
+        </Form.Field>
+        <Form.Field name={['address', 'number']} label="Number">
+          <TextInput />
+        </Form.Field>
+        <Form.List name="contacts">
+          {(fields, { addItem, removeItem }) => (
+            <div>
+              {fields.map((field, index) => {
+                return (
+                  <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+                    <Form.Field
+                      name={[index, 'mobile']}
+                      label="Mobile"
+                      rules={[{ required: true, message: 'Required Field' }]}
+                    >
+                      <TextInput />
+                    </Form.Field>
 
-### `npm run build`
+                    <Button onClick={() => removeItem(field.key)}>Remove</Button>
+                  </div>
+                );
+              })}
+              <Button onClick={() => addItem()}>Add Item</Button>
+            </div>
+          )}
+        </Form.List>
+        <Button onClick={() => form.submit()}>Enviar</Button>
+      </Form>
+    </div>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default TestView;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
