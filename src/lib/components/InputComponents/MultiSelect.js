@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './MultiSelect.scss';
-import { AiOutlineDown } from 'react-icons/ai';
 import { filterobject } from '../../utils/filters';
 
 export default function MultiSelect({

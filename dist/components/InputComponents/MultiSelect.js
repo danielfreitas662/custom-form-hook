@@ -15,8 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 require("./MultiSelect.scss");
 
-var _ai = require("react-icons/ai");
-
 var _filters = require("../../utils/filters");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
